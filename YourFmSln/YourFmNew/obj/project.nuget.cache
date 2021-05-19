@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "dgSpecHash": "pBP+vETUhwjM7cNIKv45zU1PmxuDq0ygtP9awzpRi+oqDtkdniZj4hkEaI2A9Nr8pGQMYIMAPONuk0wWohai4w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Andre\\Documents\\YourFmNew\\YourFmNew\\YourFmNew.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Andre\\.nuget\\packages\\darkmodeui\\3.1.0\\darkmodeui.3.1.0.nupkg.sha512",
+    "C:\\Users\\Andre\\.nuget\\packages\\devlib.modernui\\2.17.8\\devlib.modernui.2.17.8.nupkg.sha512",
+    "C:\\Users\\Andre\\.nuget\\packages\\devlib.winforms\\2.17.8\\devlib.winforms.2.17.8.nupkg.sha512",
+    "C:\\Users\\Andre\\.nuget\\packages\\makarovdev.expandcollapsepanel\\1.0.0\\makarovdev.expandcollapsepanel.1.0.0.nupkg.sha512",
+    "C:\\Users\\Andre\\.nuget\\packages\\vip.customform\\1.0.0\\vip.customform.1.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'DevLib.ModernUI 2.17.8' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto 'net5.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "DevLib.ModernUI",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'DevLib.WinForms 2.17.8' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto 'net5.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "DevLib.WinForms",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'MakarovDev.ExpandCollapsePanel 1.0.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto 'net5.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "MakarovDev.ExpandCollapsePanel",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Vip.CustomForm 1.0.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto 'net5.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Vip.CustomForm",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
+}
