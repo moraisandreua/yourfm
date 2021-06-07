@@ -143,7 +143,7 @@ namespace YourFmNew
 
         private void createShow()
         {
-            Show s = new Show();
+            Show s = new Show(this);
             s.Name = "showController";
             s.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
             s.Size = new Size(629, 693);

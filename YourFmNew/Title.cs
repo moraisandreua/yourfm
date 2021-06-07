@@ -13,6 +13,9 @@ namespace YourFmNew
     public partial class Title : Form
     {
         Main superWindow = null;
+        int diffX = 0;
+        int diffY = 0;
+
         public Title(Main super)
         {
             InitializeComponent();
@@ -36,15 +39,17 @@ namespace YourFmNew
         {
             if (mouseDown)
             {
-                mouseX = MousePosition.X-500;
-                mouseY = MousePosition.Y-25;
+                mouseX = MousePosition.X-diffX;
+                mouseY = MousePosition.Y-diffY;
                 superWindow.SetDesktopLocation(mouseX, mouseY);
             }
         }
 
         private void Title_MouseDown(object sender, MouseEventArgs e)
         {
-            mouseDown = true; 
+            mouseDown = true;
+            diffX = MousePosition.X - superWindow.Location.X;
+            diffY = MousePosition.Y - superWindow.Location.Y;
         }
     }
 }
