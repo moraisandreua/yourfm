@@ -23,5 +23,10 @@ namespace YourFmNew
         {
             super.openShowManage();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            super.openAddEpisode();
+        }
     }
 }

@@ -130,11 +130,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Andre\\Documents\\GitHub\\yourfm\\YourFmNew\\YourFmNew.csproj",
+      "projectUniqueName": "C:\\Users\\Andre\\Documents\\YourFmNew\\YourFmNew\\YourFmNew.csproj",
       "projectName": "YourFmNew",
-      "projectPath": "C:\\Users\\Andre\\Documents\\GitHub\\yourfm\\YourFmNew\\YourFmNew.csproj",
+      "projectPath": "C:\\Users\\Andre\\Documents\\YourFmNew\\YourFmNew\\YourFmNew.csproj",
       "packagesPath": "C:\\Users\\Andre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Andre\\Documents\\GitHub\\yourfm\\YourFmNew\\obj\\",
+      "outputPath": "C:\\Users\\Andre\\Documents\\YourFmNew\\YourFmNew\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Andre\\AppData\\Roaming\\NuGet\\NuGet.Config",

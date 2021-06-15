@@ -36,6 +36,8 @@ namespace YourFmNew
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.darkButton1 = new DarkUI.Controls.DarkButton();
+            this.darkComboBox1 = new DarkUI.Controls.DarkComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -130,6 +132,8 @@ namespace YourFmNew
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Controls.Add(this.darkButton1);
+            this.panel3.Controls.Add(this.darkComboBox1);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.pictureBox1);
@@ -143,6 +147,32 @@ namespace YourFmNew
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(400, 635);
             this.panel3.TabIndex = 4;
+            // 
+            // darkButton1
+            // 
+            this.darkButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.darkButton1.Location = new System.Drawing.Point(339, 498);
+            this.darkButton1.Name = "darkButton1";
+            this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton1.Size = new System.Drawing.Size(38, 38);
+            this.darkButton1.TabIndex = 16;
+            this.darkButton1.Text = "+";
+            // 
+            // darkComboBox1
+            // 
+            this.darkComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.darkComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.darkComboBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.darkComboBox1.FormattingEnabled = true;
+            this.darkComboBox1.Items.AddRange(new object[] {
+            "Playlist1",
+            "Playlist2",
+            "Playlist3"});
+            this.darkComboBox1.Location = new System.Drawing.Point(31, 498);
+            this.darkComboBox1.Name = "darkComboBox1";
+            this.darkComboBox1.Size = new System.Drawing.Size(302, 38);
+            this.darkComboBox1.TabIndex = 15;
             // 
             // label2
             // 
@@ -307,5 +337,7 @@ namespace YourFmNew
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label4;
+        private DarkUI.Controls.DarkButton darkButton1;
+        private DarkUI.Controls.DarkComboBox darkComboBox1;
     }
 }

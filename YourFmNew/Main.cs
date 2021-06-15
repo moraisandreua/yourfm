@@ -14,8 +14,10 @@ namespace YourFmNew
 
         private void setSize()
         {
-            titleBarBtn.Location = new Point(this.Location.X + titleBarBtn_left, this.Location.Y + titleBarBtn_top);
-            titleBarBtn.Size = new Size(this.Size.Width - 100, 41);
+            if(titleBarBtn != null){
+                titleBarBtn.Size = new Size(this.Size.Width - 100, 41);
+                titleBarBtn.Location = new Point(this.Location.X + titleBarBtn_left, this.Location.Y + titleBarBtn_top);
+            }
         }
 
         public Main()
@@ -25,6 +27,29 @@ namespace YourFmNew
             setSize();
             titleBarBtn.Show();
             titleBarBtn.Owner = this;
+        }
+
+        private void createTileBar()
+        {
+            titleBarBtn.showControls();
+        }
+
+        private void createLogin()
+        {
+            Login lg = new Login(this);
+            lg.Name = "loginPanel";
+            lg.Size = new Size(this.Size.Width, this.Size.Height);
+            lg.Location = new Point(0, 0);
+            lg.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            this.Controls.Add(lg);
+            lg.BringToFront();
+        }
+
+        public void loggedIn()
+        {
+            Login lg = (Login) Controls.Find("loginPanel", true)[0];
+            this.Controls.Remove(lg);
+            createTileBar();
         }
 
         private void Form2_Move(object sender, EventArgs e)
@@ -61,8 +86,13 @@ namespace YourFmNew
             createChat();
             createShow();
             createShowManage();
+            createPlaylist();
+            createPlaylist_form();
+            createAddEpisode();
+            createAddShow();
 
             openHome();
+            createLogin();
         }
 
         private void createHome()
@@ -103,9 +133,28 @@ namespace YourFmNew
             s.BringToFront();
         }
 
+        private void createPlaylist_form()
+        {
+            AddPlaylist ap = new AddPlaylist();
+            ap.Name = "addplaylistController";
+            ap.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+            ap.Size = new Size(629, 693);
+            ap.Location = new Point(400, 0);
+
+            this.Controls.Add(ap);
+        }
+
+        public void openPlaylist_form()
+        {
+            Control[] controls = this.Controls.Find("addplaylistController", true);
+            AddPlaylist ap = (AddPlaylist)controls[0];
+
+            ap.BringToFront();
+        }
+
         private void createLibrary()
         {
-            Library l = new Library();
+            Library l = new Library(this);
             l.Name = "libraryController";
             l.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
             l.Size = new Size(629, 693);
@@ -218,6 +267,63 @@ namespace YourFmNew
                 p.Controls.Add(l2);
                 panel1.Controls.Add(p);
             }
+        }
+
+        void createPlaylist()
+        {
+            Playlist sp = new Playlist();
+            sp.Name = "showPlaylist";
+            sp.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+            sp.Size = new Size(629, 693);
+            sp.Location = new Point(400, 0);
+
+            this.Controls.Add(sp);
+        }
+
+        public void openPlaylist(int id)
+        {
+            Control[] controls = this.Controls.Find("showPlaylist", true);
+            Playlist sp = (Playlist)controls[0];
+            sp.setID(id);
+            sp.BringToFront();
+        }
+
+        private void createAddShow()
+        {
+            AddShow l = new AddShow();
+            l.Name = "AddShowController";
+            l.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+            l.Size = new Size(629, 693);
+            l.Location = new Point(400, 0);
+
+            this.Controls.Add(l);
+        }
+
+        public void openAddShow()
+        {
+            Control[] controls = this.Controls.Find("AddShowController", true);
+            AddShow l = (AddShow)controls[0];
+
+            l.BringToFront();
+        }
+
+        private void createAddEpisode()
+        {
+            AddEpisode l = new AddEpisode();
+            l.Name = "AddEpisodeController";
+            l.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
+            l.Size = new Size(629, 693);
+            l.Location = new Point(400, 0);
+
+            this.Controls.Add(l);
+        }
+
+        public void openAddEpisode()
+        {
+            Control[] controls = this.Controls.Find("AddEpisodeController", true);
+            AddEpisode l = (AddEpisode)controls[0];
+
+            l.BringToFront();
         }
 
         void hoverPanel(Object p, EventArgs e)
