@@ -30,3 +30,8 @@ C:\Users\Andre\Documents\YourFmNew\YourFmNew\obj\Debug\net5.0-windows\YourFmNew.
 C:\Users\Andre\Documents\YourFmNew\YourFmNew\obj\Debug\net5.0-windows\YourFmNew.Chat.resources
 C:\Users\Andre\Documents\YourFmNew\YourFmNew\obj\Debug\net5.0-windows\YourFmNew.Show.resources
 C:\Users\Andre\Documents\YourFmNew\YourFmNew\obj\Debug\net5.0-windows\YourFmNew.ShowManage.resources
+C:\Users\Andre\Documents\YourFmNew\YourFmNew\obj\Debug\net5.0-windows\YourFmNew.Login.resources
+C:\Users\Andre\Documents\YourFmNew\YourFmNew\obj\Debug\net5.0-windows\YourFmNew.Playlist.resources
+C:\Users\Andre\Documents\YourFmNew\YourFmNew\obj\Debug\net5.0-windows\YourFmNew.AddPlaylist.resources
+C:\Users\Andre\Documents\YourFmNew\YourFmNew\obj\Debug\net5.0-windows\YourFmNew.AddEpisode.resources
+C:\Users\Andre\Documents\YourFmNew\YourFmNew\obj\Debug\net5.0-windows\YourFmNew.AddShow.resources

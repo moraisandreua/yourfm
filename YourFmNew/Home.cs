@@ -59,5 +59,10 @@ namespace YourFmNew
         {
             superMain.openChat();
         }
+
+        private void darkButton1_Click(object sender, EventArgs e)
+        {
+            superMain.openAddShow();
+        }
     }
 }

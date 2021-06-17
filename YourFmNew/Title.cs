@@ -51,5 +51,10 @@ namespace YourFmNew
             diffX = MousePosition.X - superWindow.Location.X;
             diffY = MousePosition.Y - superWindow.Location.Y;
         }
+
+        public void showControls()
+        {
+            panel3.Visible = true;
+        } 
     }
 }
