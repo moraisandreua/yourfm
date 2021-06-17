@@ -1,4 +1,5 @@
 -- IF Object_Id('dbo.generoList', 'P') IS NOT NULL DROP PROCEDURE dbo.generoList
+USE yourfm;
 CREATE PROCEDURE dbo.generoList @PageNumber AS INT = 1,@RowsPerPage AS INT = 15
 AS
     SELECT 

@@ -2,11 +2,14 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace YourFmNew
 {
     public partial class Main : Vip.CustomForm.FormBase
     {
+        public SqlConnection cnn;
         Title titleBarBtn = null;
         int titleBarBtn_left = 0;
         int titleBarBtn_top = 0;
@@ -23,6 +26,9 @@ namespace YourFmNew
         public Main()
         {
             InitializeComponent();
+            cnn = new SqlConnection("Data Source=localhost;DataBase=yourfm;Integrated Security=True"); //  DataBase=yourfm;User ID=UserName;Password=Password
+            //cnn.Open();
+
             titleBarBtn = new Title(this);
             setSize();
             titleBarBtn.Show();
@@ -223,7 +229,7 @@ namespace YourFmNew
         public void openShowManage()
         {
             Control[] controls = this.Controls.Find("showManageController", true);
-            Show sm = (Show)controls[0];
+            ShowManage sm = (ShowManage)controls[0];
 
             sm.BringToFront();
         }

@@ -1,5 +1,5 @@
 -- IF Object_Id('dbo.programasLocutor', 'P') IS NOT NULL DROP PROCEDURE dbo.programasLocutor
-
+USE yourfm;
 CREATE PROCEDURE dbo.programasLocutor @locutorId AS INT
 AS
     SELECT p.nome, p.descricao,p.foto,u.nome AS estacao
