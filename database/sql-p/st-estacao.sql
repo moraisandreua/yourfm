@@ -2,7 +2,7 @@
 CREATE PROC dbo.estacaoList @PageNumber AS INT = 1,@RowsPerPage AS INT = 15
 AS 
     SELECT 
-        u.nome, u.foto
+        u.userid, u.nome, u.foto
     FROM [dbo].[user] u
         INNER JOIN dbo.estacao e
     ON u.userid = e.estacaoid
