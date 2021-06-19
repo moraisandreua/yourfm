@@ -45,6 +45,7 @@ namespace YourFmNew
             this.label2 = new System.Windows.Forms.Label();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkButton4 = new DarkUI.Controls.DarkButton();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -128,6 +129,7 @@ namespace YourFmNew
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel2.Controls.Add(this.textBox8);
             this.panel2.Controls.Add(this.darkComboBox1);
             this.panel2.Controls.Add(this.textBox7);
             this.panel2.Controls.Add(this.textBox6);
@@ -156,6 +158,7 @@ namespace YourFmNew
             this.darkComboBox1.Name = "darkComboBox1";
             this.darkComboBox1.Size = new System.Drawing.Size(476, 46);
             this.darkComboBox1.TabIndex = 16;
+            this.darkComboBox1.SelectedIndexChanged += new System.EventHandler(this.darkComboBox1_SelectedIndexChanged);
             // 
             // textBox7
             // 
@@ -255,6 +258,20 @@ namespace YourFmNew
             this.darkButton4.Size = new System.Drawing.Size(117, 58);
             this.darkButton4.TabIndex = 7;
             this.darkButton4.Text = "Signup";
+            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
+            // 
+            // textBox8
+            // 
+            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox8.Location = new System.Drawing.Point(12, 383);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.PlaceholderText = "Foto (url)";
+            this.textBox8.Size = new System.Drawing.Size(476, 38);
+            this.textBox8.TabIndex = 17;
             // 
             // Login
             // 
@@ -291,5 +308,6 @@ namespace YourFmNew
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label2;
         private DarkUI.Controls.DarkComboBox darkComboBox1;
+        private System.Windows.Forms.TextBox textBox8;
     }
 }

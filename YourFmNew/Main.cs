@@ -85,7 +85,7 @@ namespace YourFmNew
 
         private void Main_Load(object sender, EventArgs e)
         {
-            createProfile("username");
+            createProfile();
             createHome();
             createSearch();
             createLibrary();
@@ -122,7 +122,7 @@ namespace YourFmNew
 
         private void createSearch()
         {
-            Search s = new Search();
+            Search s = new Search(this);
             s.Name = "searchController";
             s.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
             s.Size = new Size(629, 693);
@@ -188,7 +188,7 @@ namespace YourFmNew
             this.Controls.Add(c);
         }
 
-        public void openChat()
+        public void openChat(int id)
         {
             Control[] controls = this.Controls.Find("chatController", true);
             Chat c = (Chat)controls[0];
@@ -234,50 +234,67 @@ namespace YourFmNew
             sm.BringToFront();
         }
 
-        private void createProfile(String username)
+        // for the right panel
+        private void createProfile()
         {
-            // TODO: set name
-            // TODO: set username
-            // TODO: set hosted shows
+            cnn.Open();
+            SqlCommand sqlCmd = new SqlCommand("programasLocutor", cnn);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+
+            sqlCmd.Parameters.AddWithValue("@locutorId", SqlDbType.Int).Value = 35; // to-do change this
+            SqlDataReader dr = sqlCmd.ExecuteReader();
+
             panel1.HorizontalScroll.Maximum = 0;
-            for (int i=0; i<4; i++)
+            if (dr.HasRows)
             {
-                // size: 365; 142
-                Panel p = new Panel();
-                p.Location = new Point(0, (int) (142*i));
-                p.Size = new Size(365, 142);
-                p.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
-                p.MouseEnter += new EventHandler(hoverPanel);
-                p.MouseLeave += new EventHandler(outPanel);
+                int x = 0;
+                while (dr.Read())
+                {
+                    string nome_show = dr.GetString(0);
+                    string descricao_show = dr.GetString(1);
+                    string foto_show = dr.GetString(2);
+                    string nome_estacao = dr.GetString(3);
 
-                PictureBox pb = new PictureBox();
-                pb.Size = new Size(100,100);
-                pb.Location = new Point(9,21);
-                pb.BackColor = Color.AliceBlue;
+                    Panel p = new Panel();
+                    p.Location = new Point(0, (int)(142 * x));
+                    p.Size = new Size(365, 142);
+                    p.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
+                    p.MouseEnter += new EventHandler(hoverPanel);
+                    p.MouseLeave += new EventHandler(outPanel);
 
-                Label l1 = new Label();
-                l1.Text = "Nome do programa";
-                l1.ForeColor = Color.White;
-                l1.Font = new Font(new FontFamily("Segoe UI"), (float) 12.0, FontStyle.Bold, GraphicsUnit.Point); //Segoe UI; 12pt; style=Bold
-                l1.Location = new Point(115, 33);
-                l1.Size = new Size(365, 32);
+                    PictureBox pb = new PictureBox();
+                    pb.Size = new Size(100, 100);
+                    pb.Location = new Point(9, 21);
+                    pb.BackColor = Color.AliceBlue;
+                    pb.Load(foto_show);
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                Label l2 = new Label();
-                l2.Text = "username da estação";
-                l2.ForeColor = Color.White;
-                l2.Font = new Font(new FontFamily("Segoe UI"), (float)10.0, FontStyle.Regular, GraphicsUnit.Point); //Segoe UI; 12pt; style=Bold
-                l2.Location = new Point(117, 77);
+                    Label l1 = new Label();
+                    l1.Text = nome_show;
+                    l1.ForeColor = Color.White;
+                    l1.Font = new Font(new FontFamily("Segoe UI"), (float)12.0, FontStyle.Bold, GraphicsUnit.Point); //Segoe UI; 12pt; style=Bold
+                    l1.Location = new Point(115, 33);
+                    l1.Size = new Size(365, 32);
 
-                p.Controls.Add(pb);
-                p.Controls.Add(l1);
-                p.Controls.Add(l2);
-                panel1.Controls.Add(p);
+                    Label l2 = new Label();
+                    l2.Text = nome_estacao;
+                    l2.ForeColor = Color.White;
+                    l2.Font = new Font(new FontFamily("Segoe UI"), (float)10.0, FontStyle.Regular, GraphicsUnit.Point); //Segoe UI; 12pt; style=Bold
+                    l2.Location = new Point(117, 77);
+
+                    p.Controls.Add(pb);
+                    p.Controls.Add(l1);
+                    p.Controls.Add(l2);
+                    panel1.Controls.Add(p);
+                    x++;
+                }
             }
+            cnn.Close();
         }
 
         void createPlaylist()
         {
-            Playlist sp = new Playlist();
+            Playlist sp = new Playlist(this);
             sp.Name = "showPlaylist";
             sp.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
             sp.Size = new Size(629, 693);
@@ -286,12 +303,20 @@ namespace YourFmNew
             this.Controls.Add(sp);
         }
 
-        public void openPlaylist(int id)
+        public void openPlaylist(string genreName, bool playlist)
         {
             Control[] controls = this.Controls.Find("showPlaylist", true);
             Playlist sp = (Playlist)controls[0];
-            sp.setID(id);
             sp.BringToFront();
+            sp.loadShows(playlist, genreName);
+        }
+
+        public void openPlaylist(int id, bool playlist)
+        {
+            Control[] controls = this.Controls.Find("showPlaylist", true);
+            Playlist sp = (Playlist)controls[0];
+            sp.BringToFront();
+            sp.loadShows(playlist, id);
         }
 
         private void createAddShow()
@@ -381,7 +406,7 @@ namespace YourFmNew
         private void label2_Click(object sender, EventArgs e)
         {
             // set right panel information
-            openChat();
+            openChat(0);
         }
     }
 }

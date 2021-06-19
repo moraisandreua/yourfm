@@ -40,29 +40,11 @@ namespace YourFmNew
             double pictureWidth = availableWidth / 5;
 
             getStations(pictureWidth, currentPage); // currentPage é um parametro da class que identifica a página atual da paginação
-
-            /*for (int x = 1; x <= 11; x++)
-            {
-                PictureBox pb = new PictureBox();
-                pb.Width = (int)pictureWidth;
-                pb.Height = (int)pictureWidth;
-
-                double left = (x * 20) + ((x - 1) * pictureWidth);
-                double top = (x * 20);
-
-                pb.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
-                pb.Location = new Point((int)left, (int)top);
-                pb.BackColor = Color.AliceBlue;
-                pb.Click += new EventHandler(openChat);
-                pb.Cursor = System.Windows.Forms.Cursors.Hand;
-
-                flowLayoutPanel1.Controls.Add(pb);
-            }*/
         }
 
         void openChat(Object sender, EventArgs e)
         {
-            superMain.openChat();
+            superMain.openChat(0); // TO-DO alterar isto
         }
 
         private void darkButton1_Click(object sender, EventArgs e)
@@ -76,9 +58,6 @@ namespace YourFmNew
             SqlCommand sqlCmd = new SqlCommand("estacaoList", superMain.cnn);
             sqlCmd.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter pageNum = new SqlParameter("@PageNumber", SqlDbType.Int);
-            pageNum.Value = page;
-
             sqlCmd.Parameters.AddWithValue("@PageNumber", SqlDbType.Int).Value = page;
             sqlCmd.Parameters.AddWithValue("@RowsPerPage", SqlDbType.Int).Value = 15;
             SqlDataReader dr = sqlCmd.ExecuteReader();
@@ -88,14 +67,21 @@ namespace YourFmNew
                 int x = 0;
                 while (dr.Read())
                 {
-                    string nome = dr.GetString(0);
-                    string foto = dr.GetString(1);
+                    int id = dr.GetInt32(0);
+                    string nome = dr.GetString(1);
+                    string foto = dr.GetString(2);
 
                     PictureBox pb = new PictureBox();
                     pb.Width = (int)pictureWidth;
                     pb.Height = (int)pictureWidth;
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                    pb.Load(foto);
+                    try
+                    {
+                        pb.Load(foto);
+                    }catch(Exception e)
+                    {
+
+                    }
 
                     double left = (x * 20) + ((x - 1) * pictureWidth);
                     double top = (x * 20);
@@ -103,6 +89,9 @@ namespace YourFmNew
                     pb.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
                     pb.Location = new Point((int)left, (int)top);
                     pb.BackColor = Color.AliceBlue;
+
+                    OpenStationEventArgs ea = new OpenStationEventArgs();
+                    ea.userID = id;
                     pb.Click += new EventHandler(openChat);
                     pb.Cursor = System.Windows.Forms.Cursors.Hand;
 
@@ -118,4 +107,9 @@ namespace YourFmNew
             return null;
         }
     }
+}
+
+public class OpenStationEventArgs : EventArgs
+{
+    public int userID {get; set;}
 }

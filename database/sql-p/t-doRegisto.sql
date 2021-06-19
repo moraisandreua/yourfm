@@ -8,6 +8,8 @@
 
 --IF Object_Id('dbo.doRegisto', 'P') IS NOT NULL DROP PROCEDURE dbo.doRegisto
 --? Será que vale a pena fazer alguma validação nos parâmetros de entrada. Por exemplo imagens
+
+-- frontend implemented
 CREATE PROC dbo.doRegisto 
     @username AS VARCHAR(18), @password AS VARCHAR(32), @email AS VARCHAR (60), @data_nasc AS DATE, @nome AS VARCHAR(45), @foto AS varchar(256),
     @tipoUser AS VARCHAR(8) = "user"

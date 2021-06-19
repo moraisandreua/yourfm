@@ -86,7 +86,7 @@ namespace YourFmNew
         private void openPlaylist(Object sender, EventArgs e)
         {
             int id = 0;
-            super.openPlaylist(id);
+            super.openPlaylist(id, true); // TODO: alterar isto para aceitar o id da playlist
         }
 
         private void Library_Load(object sender, EventArgs e)

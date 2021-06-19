@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,11 @@ namespace YourFmNew
 {
     public partial class Search : UserControl
     {
-        public Search()
+        Main superMain = null;
+
+        public Search(Main super)
         {
+            superMain = super;
             InitializeComponent();
         }
 
@@ -29,28 +33,54 @@ namespace YourFmNew
         }
 
         private void loadGenres() {
-            panel2.Controls.Clear();
+            panel1.Controls.Clear();
             int pictureSize = 200;
 
-            for (int x = 1; x <= 15; x++)
-            {
-                PictureBox pb = new PictureBox();
-                pb.Width = (int)pictureSize;
-                pb.Height = (int)pictureSize;
+            superMain.cnn.Open();
+            SqlCommand sqlCmd = new SqlCommand("generoList", superMain.cnn);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
 
-                double left = (x * 20) + ((x - 1) * pictureSize);
-                int top = 0;
+            sqlCmd.Parameters.AddWithValue("@PageNumber", SqlDbType.Int).Value = 1;
+            sqlCmd.Parameters.AddWithValue("@RowsPerPage", SqlDbType.Int).Value = 15;
+            SqlDataReader dr = sqlCmd.ExecuteReader();
 
-                pb.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
-                pb.Location = new Point((int)left, top);
-                pb.BackColor = Color.AliceBlue;
-                panel2.Controls.Add(pb);
+            if (dr.HasRows){
+                int x = 0;
+                while (dr.Read()){
+                    string nome = dr.GetString(0);
+                    object foto = dr.GetValue(1);
+                    
+                    PictureBox pb = new PictureBox();
+                    pb.Width = (int)pictureSize;
+                    pb.Height = (int)pictureSize;
+
+                    double left = (x * 20) + ((x - 1) * pictureSize);
+                    int top = 0;
+
+                    pb.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
+                    pb.Location = new Point((int)left, top);
+                    pb.BackColor = Color.AliceBlue;
+                    pb.Click += new EventHandler((sender, e) => openGenre(nome, false));
+                    pb.Cursor = Cursors.Hand;
+                    if (foto != DBNull.Value){
+                        pb.Load((string)foto);
+                    }
+                    
+                    panel1.Controls.Add(pb);
+                    x++;
+                }
             }
+            superMain.cnn.Close();
+        }
+
+        void openGenre(string genreName, bool isPlaylist) //Object p, EventArgs e
+        {
+            superMain.openPlaylist(genreName, isPlaylist);
         }
 
         private void loadStations()
         {
-            panel1.Controls.Clear();
+            panel2.Controls.Clear();
             int pictureSize = 200;
 
             for (int x = 1; x <= 15; x++)
@@ -65,7 +95,7 @@ namespace YourFmNew
                 pb.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
                 pb.Location = new Point((int)left, top);
                 pb.BackColor = Color.AliceBlue;
-                panel1.Controls.Add(pb);
+                panel2.Controls.Add(pb);
             }
         }
     }

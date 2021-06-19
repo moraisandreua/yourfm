@@ -9,6 +9,7 @@ AS
 --username, nome, foto, id, type
 */
 
+-- frontend implemented
 CREATE PROC dbo.doLogin
     @username AS VARCHAR(18) = NULL,
     @password AS VARCHAR(32) = NULL
