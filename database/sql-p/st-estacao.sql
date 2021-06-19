@@ -1,4 +1,6 @@
 -- IF Object_Id('dbo.estacaoList', 'P') IS NOT NULL DROP PROCEDURE dbo.estacaoList
+
+-- frontend implemented
 CREATE PROC dbo.estacaoList @PageNumber AS INT = 1,@RowsPerPage AS INT = 15
 AS 
     SELECT 

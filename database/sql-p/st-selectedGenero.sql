@@ -1,6 +1,7 @@
 --IF Object_Id('dbo.selectedGenero', 'P') IS NOT NULL DROP PROCEDURE dbo.selectedGenero
 
 -- Método para ir buscar os programas de uma dada categoria
+-- frontend implemented
 CREATE PROC dbo.selectedGenero 
     @selGeneroId as int = null, @selGeneroNome as varchar(100) = null
 AS
