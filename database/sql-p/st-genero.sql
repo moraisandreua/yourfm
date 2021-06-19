@@ -1,5 +1,6 @@
 -- IF Object_Id('dbo.generoList', 'P') IS NOT NULL DROP PROCEDURE dbo.generoList
 
+-- frontend implemented
 CREATE PROCEDURE dbo.generoList @PageNumber AS INT = 1,@RowsPerPage AS INT = 15
 AS
     SELECT 

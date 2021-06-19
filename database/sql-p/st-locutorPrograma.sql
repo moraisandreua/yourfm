@@ -1,4 +1,6 @@
 -- USE yourfm;
+
+-- frontend implemented
 CREATE PROCEDURE dbo.programasLocutor @locutorId AS INT
 AS
     SELECT p.nome, p.descricao,p.foto,u.nome AS estacao
