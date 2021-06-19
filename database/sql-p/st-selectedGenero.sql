@@ -6,11 +6,9 @@ CREATE PROC dbo.selectedGenero
 AS
 
 BEGIN
-    DECLARE @table as TABLE(nome varchar(50),descricao varchar(280), foto varchar(256))
-    PRINT @selGeneroId;
     IF @selGeneroId <> ''
         BEGIN 
-            INSERT INTO @table SELECT p.nome,p.descricao,p.foto 
+            SELECT p.nome,p.descricao,p.foto 
                 FROM categoria c
                     INNER JOIN programa_categoria pc
                         ON c.id = pc.categoria
@@ -20,7 +18,7 @@ BEGIN
         END
     ELSE IF @selGeneroNome <> '' 
         BEGIN
-            INSERT INTO @table  SELECT 
+            SELECT 
                 p.nome,p.descricao,p.foto 
             FROM categoria c
                 INNER JOIN programa_categoria pc
@@ -34,11 +32,10 @@ BEGIN
             PRINT 'ERRO!'
             RETURN 0
         END 
-
-    SELECT * FROM @table;
 END
 
 EXEC dbo.selectedGenero @selGeneroId = 32; -- |@selGeneroNome = 'Afrosoul'
+EXEC dbo.selectedGenero @selGeneroNome = 'afro soul'
 
 
 
