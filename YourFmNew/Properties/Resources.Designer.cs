@@ -113,6 +113,16 @@ namespace YourFmNew.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap image_not_found {
+            get {
+                object obj = ResourceManager.GetObject("image_not_found", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap library {
             get {
                 object obj = ResourceManager.GetObject("library", resourceCulture);

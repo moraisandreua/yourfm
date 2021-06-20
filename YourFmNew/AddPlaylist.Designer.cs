@@ -79,6 +79,7 @@ namespace YourFmNew
             this.darkButton1.Size = new System.Drawing.Size(149, 58);
             this.darkButton1.TabIndex = 7;
             this.darkButton1.Text = "Adicionar Playlist";
+            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // darkTextBox3
             // 

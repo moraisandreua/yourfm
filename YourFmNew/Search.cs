@@ -62,6 +62,7 @@ namespace YourFmNew
                     pb.BackColor = Color.AliceBlue;
                     pb.Click += new EventHandler((sender, e) => openGenre(nome, false));
                     pb.Cursor = Cursors.Hand;
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
                     if (foto != DBNull.Value){
                         pb.Load((string)foto);
                     }

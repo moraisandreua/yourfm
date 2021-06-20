@@ -15,6 +15,13 @@ namespace YourFmNew
         int titleBarBtn_top = 0;
         bool playing = false;
 
+        // user's info
+        public string username=null;
+        string nome=null;
+        string foto=null;
+        public int userID=0;
+        string user_type=null;
+
         private void setSize()
         {
             if(titleBarBtn != null){
@@ -51,8 +58,26 @@ namespace YourFmNew
             lg.BringToFront();
         }
 
-        public void loggedIn()
+        public void loggedIn(string username, string nome, string foto, int userID, string user_type)
         {
+            this.username = username;
+            this.nome = nome;
+            this.foto = foto;
+            this.userID = userID;
+            this.user_type = user_type;
+
+            // set user's info
+            label3.Text = username;
+            label4.Text = nome;
+            try
+            {
+                pictureBox2.Load(foto);
+            }catch(Exception e)
+            {
+                pictureBox2.Image = Properties.Resources.user_default;
+            }
+
+            this.username = username;
             Login lg = (Login) Controls.Find("loginPanel", true)[0];
             this.Controls.Remove(lg);
             createTileBar();
@@ -141,7 +166,7 @@ namespace YourFmNew
 
         private void createPlaylist_form()
         {
-            AddPlaylist ap = new AddPlaylist();
+            AddPlaylist ap = new AddPlaylist(this);
             ap.Name = "addplaylistController";
             ap.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
             ap.Size = new Size(629, 693);
@@ -241,7 +266,7 @@ namespace YourFmNew
             SqlCommand sqlCmd = new SqlCommand("programasLocutor", cnn);
             sqlCmd.CommandType = CommandType.StoredProcedure;
 
-            sqlCmd.Parameters.AddWithValue("@locutorId", SqlDbType.Int).Value = 35; // to-do change this
+            sqlCmd.Parameters.AddWithValue("@locutorId", SqlDbType.Int).Value = userID;
             SqlDataReader dr = sqlCmd.ExecuteReader();
 
             panel1.HorizontalScroll.Maximum = 0;
@@ -407,6 +432,38 @@ namespace YourFmNew
         {
             // set right panel information
             openChat(0);
+        }
+
+        public void setCurrentPlay(int programaID)
+        {
+            cnn.Open();
+            SqlCommand sqlCmd = new SqlCommand("detailsPrograma", cnn);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.Parameters.AddWithValue("@id", SqlDbType.Int).Value = programaID; // to-do change this
+            SqlDataReader dr = sqlCmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                int x = 0;
+                while (dr.Read())
+                {
+                    string nome_track = dr.GetString(0);
+                    string foto_track = dr.GetString(3);
+                    string username_track = dr.GetString(4);
+                    MessageBox.Show(nome_track);
+                    label1.Text = nome_track;
+                    label2.Text = username_track;
+                    try
+                    {
+                        pictureBox1.Load(foto_track);
+                    }catch(Exception e)
+                    {
+                        pictureBox1.Image = Properties.Resources.image_not_found;
+                    }
+                }
+            }
+
+            cnn.Close();
         }
     }
 }

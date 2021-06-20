@@ -37,27 +37,43 @@ namespace YourFmNew
             //loadShows();   
         }
 
-        public void loadShows(bool playlist, Object genre)
+        public void loadShows(bool playlist, Object id)
         {
             superMain.cnn.Open();
             SqlCommand sqlCmd = null;
 
             if (!playlist)
             {
-                
-
+                String genreName = (String)id; // nome do genero
+                label1.Text = genreName;
+                sqlCmd = new SqlCommand("selectedGenero", superMain.cnn);
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@selGeneroNome", SqlDbType.Text).Value = genreName;
             }
             else
             {
-                int genreID = (int)genre;
-                // TODO: load another Store Procedure
+                int playlistID = (int)id; // id da playlist
+                sqlCmd = new SqlCommand("playlistProgramas", superMain.cnn);
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@id", SqlDbType.Int).Value = playlistID;
+
+
+                // get the playlist's name
+                SqlCommand sqlCmd_details = new SqlCommand("detailsPlaylist", superMain.cnn);
+                sqlCmd_details.CommandType = CommandType.StoredProcedure;
+                sqlCmd_details.Parameters.AddWithValue("@id", SqlDbType.Int).Value = playlistID;
+                SqlDataReader dr_details = sqlCmd.ExecuteReader();
+                if (dr_details.HasRows)
+                {
+                    while (dr_details.Read())
+                    {
+                        string nome_playlist = dr_details.GetString(0);
+                        label1.Text = nome_playlist;
+                    }
+                }
             }
 
-            String genreName = (String)genre;
-            MessageBox.Show(genreName);
-            sqlCmd = new SqlCommand("selectedGenero", superMain.cnn);
-            sqlCmd.CommandType = CommandType.StoredProcedure;
-            sqlCmd.Parameters.AddWithValue("@selGeneroNome", SqlDbType.Text).Value = genreName;
+            
 
             SqlDataReader dr = sqlCmd.ExecuteReader();
 
@@ -73,6 +89,7 @@ namespace YourFmNew
                     string nome_track = dr.GetString(0);
                     string desc_track = dr.GetString(1);
                     string foto_track = dr.GetString(2);
+                    int id_track = dr.GetInt32(3);
 
                     Panel pnl = new Panel();
                     pnl.Height = pictureSize;
@@ -80,6 +97,7 @@ namespace YourFmNew
                     pnl.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
                     pnl.Location = new Point(0, top);
                     pnl.Name = "tracks";
+                    pnl.Click += new EventHandler((sender, e) => play(id_track));
 
                     PictureBox pb = new PictureBox();
                     pb.Width = (int)pictureSize;
@@ -87,8 +105,8 @@ namespace YourFmNew
                     pb.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
                     pb.Location = new Point(0, 0);
                     pb.BackColor = Color.AliceBlue;
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
                     pb.Load(foto_track);
-                    //pb.Click += new EventHandler(); // to-do: "play" track
                     pnl.Controls.Add(pb);
 
                     Label nome = new Label();
@@ -118,9 +136,9 @@ namespace YourFmNew
             }
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void play(int programaID)
         {
-
+            superMain.setCurrentPlay(programaID);
         }
     }
 }

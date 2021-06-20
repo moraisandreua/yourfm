@@ -12,9 +12,22 @@ namespace YourFmNew
 {
     public partial class AddPlaylist : UserControl
     {
-        public AddPlaylist()
+        Main superMain = null;
+        public AddPlaylist(Main super)
         {
             InitializeComponent();
+            superMain = super;
+        }
+
+        private void darkButton1_Click(object sender, EventArgs e)
+        {
+            string nome = darkTextBox1.Text;
+            string desc = darkTextBox2.Text;
+            string foto = darkTextBox3.Text;
+            int userID = superMain.userID;
+
+            
+
         }
     }
 }

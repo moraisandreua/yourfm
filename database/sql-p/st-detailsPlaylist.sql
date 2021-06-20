@@ -1,6 +1,7 @@
 --IF Object_Id('dbo.detailsPlaylist', 'P') IS NOT NULL DROP PROCEDURE dbo.detailsPlaylist
 
 -- Devolve o nome, a descrição, a foto e o número de programas de uma dada playlist 
+-- frontend implemented
 CREATE PROC dbo.detailsPlaylist
 @id as int 
 AS 

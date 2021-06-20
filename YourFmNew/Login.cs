@@ -31,6 +31,10 @@ namespace YourFmNew
 
             String username = textBox1.Text;
             String password = textBox2.Text;
+            string nome =null;
+            string foto = null;
+            int userID = 0;
+            string user_type = null;
             // TODO: all the verifications
 
             superMain.cnn.Open();
@@ -45,12 +49,20 @@ namespace YourFmNew
             {
                 int x = 0;
                 while (dr.Read())
+                {
+                    // dr.GetString(1) é o username
+                    nome = dr.GetString(1);
+                    foto = dr.GetString(2);
+                    userID = dr.GetInt32(3);
+                    user_type = dr.GetString(4);
+
                     x++;
+                }
 
                 if (x > 1)
                     MessageBox.Show("Erro, pardoname");
                 else
-                    superMain.loggedIn();
+                    superMain.loggedIn(username, nome, foto, userID, user_type);
             }
             else
             {
