@@ -1,6 +1,7 @@
 -- IF Object_Id('dbo.detailsPrograma', 'P') IS NOT NULL DROP PROCEDURE dbo.detailsPrograma
 
 --? Será que vale a pena fazer um inner join com estação sabendo que é a mesma coisa? 
+-- frontend implemented
 CREATE PROC dbo.detailsPrograma
     @id as int
 AS
@@ -19,5 +20,5 @@ AS
     GROUP BY p.nome,p.descricao,c.designacao,p.foto,u.nome
 
 
-EXEC dbo.detailsPrograma 1 
+--EXEC dbo.detailsPrograma 1 
 

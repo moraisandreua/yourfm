@@ -9,7 +9,7 @@ AS
 BEGIN
     IF @selGeneroId <> ''
         BEGIN 
-            SELECT p.nome,p.descricao,p.foto 
+            SELECT p.nome,p.descricao,p.foto, p.id 
                 FROM categoria c
                     INNER JOIN programa_categoria pc
                         ON c.id = pc.categoria
@@ -20,7 +20,7 @@ BEGIN
     ELSE IF @selGeneroNome <> '' 
         BEGIN
             SELECT 
-                p.nome,p.descricao,p.foto 
+                p.nome,p.descricao,p.foto, p.id 
             FROM categoria c
                 INNER JOIN programa_categoria pc
                     ON c.id = pc.categoria
