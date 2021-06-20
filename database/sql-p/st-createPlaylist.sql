@@ -1,3 +1,5 @@
+--IF Object_Id('dbo.createPlaylist', 'P') IS NOT NULL DROP PROCEDURE dbo.createPlaylist
+
 CREATE PROC dbo.createPlaylist
     @designacao AS VARCHAR(80),@descricao AS VARCHAR(80),@userid AS INT, @foto AS VARCHAR(256)
 AS 
