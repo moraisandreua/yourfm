@@ -20,5 +20,5 @@ AS
     GROUP BY p.nome,p.descricao,c.designacao,p.foto,u.nome
 
 
---EXEC dbo.detailsPrograma 1 
+-- EXEC dbo.detailsPrograma 1 
 

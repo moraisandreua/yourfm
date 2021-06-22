@@ -3,6 +3,6 @@
 CREATE PROC dbo.listUserPlaylists
     @userid AS INT
 AS
-    SELECT lp.id, lp.designacao FROM listareproducao lp where @userid = lp.userid
+    SELECT lp.id, lp.designacao,lp.foto FROM listareproducao lp where @userid = lp.userid
 
 EXEC dbo.listUserPlaylists 12

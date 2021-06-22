@@ -6,12 +6,12 @@ CREATE PROC dbo.selectedEstacao
 AS
 
 BEGIN
-    DECLARE @table as TABLE(nome varchar(50),descricao varchar(280), foto varchar(256))
+    DECLARE @table as TABLE(id INT, nome varchar(50),descricao varchar(280), foto varchar(256))
     PRINT @selEstacaoId;
     IF @selEstacaoId <> ''
         BEGIN 
             INSERT INTO @table SELECT 
-                p.nome,p.descricao,p.foto
+                p.id,p.nome,p.descricao,p.foto
             FROM estacao e
                 INNER JOIN programa p
                         ON p.estacao = e.estacaoid
@@ -20,7 +20,7 @@ BEGIN
     ELSE IF @selEstacaoNome <> '' 
         BEGIN
             INSERT INTO @table SELECT 
-                p.nome,p.descricao,p.foto
+                p.id,p.nome,p.descricao,p.foto
             FROM estacao e
                 INNER JOIN programa p
                         ON p.estacao = e.estacaoid
