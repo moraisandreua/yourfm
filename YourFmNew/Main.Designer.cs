@@ -158,6 +158,7 @@ namespace YourFmNew
             this.darkButton1.Size = new System.Drawing.Size(38, 38);
             this.darkButton1.TabIndex = 16;
             this.darkButton1.Text = "+";
+            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // darkComboBox1
             // 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,18 @@ namespace YourFmNew
             string foto = darkTextBox3.Text;
             int userID = superMain.userID;
 
-            
+            // @designacao AS VARCHAR(80),@descricao AS VARCHAR(80),@userid AS INT, @foto AS VARCHAR(256)
+            superMain.cnn.Open();
+            SqlCommand sqlCmd = new SqlCommand("createPlaylist", superMain.cnn);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.Parameters.AddWithValue("@designacao", SqlDbType.Int).Value = nome;
+            sqlCmd.Parameters.AddWithValue("@descricao", SqlDbType.Int).Value = desc;
+            sqlCmd.Parameters.AddWithValue("@userid", SqlDbType.Int).Value = userID;
+            sqlCmd.Parameters.AddWithValue("@foto", SqlDbType.Int).Value = foto;
+            SqlDataReader dr = sqlCmd.ExecuteReader();
 
+            superMain.cnn.Close();
+            superMain.addOwnPlaylistsDropbox();
         }
     }
 }

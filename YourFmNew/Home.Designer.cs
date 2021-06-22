@@ -30,9 +30,9 @@ namespace YourFmNew
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +49,18 @@ namespace YourFmNew
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1073, 753);
             this.panel1.TabIndex = 0;
+            // 
+            // darkButton1
+            // 
+            this.darkButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.darkButton1.Location = new System.Drawing.Point(787, 20);
+            this.darkButton1.Name = "darkButton1";
+            this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton1.Size = new System.Drawing.Size(269, 48);
+            this.darkButton1.TabIndex = 2;
+            this.darkButton1.Text = "Adicionar Programa";
+            this.darkButton1.Visible = false;
+            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -70,17 +82,6 @@ namespace YourFmNew
             this.label1.Size = new System.Drawing.Size(320, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Estações de Rádio";
-            // 
-            // darkButton1
-            // 
-            this.darkButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.darkButton1.Location = new System.Drawing.Point(787, 20);
-            this.darkButton1.Name = "darkButton1";
-            this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton1.Size = new System.Drawing.Size(269, 48);
-            this.darkButton1.TabIndex = 2;
-            this.darkButton1.Text = "Adicionar Programa";
-            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // Home
             // 

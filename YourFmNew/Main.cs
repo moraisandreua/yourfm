@@ -14,13 +14,14 @@ namespace YourFmNew
         int titleBarBtn_left = 0;
         int titleBarBtn_top = 0;
         bool playing = false;
+        int currentPlaylingId=0;
 
         // user's info
         public string username=null;
         string nome=null;
         string foto=null;
         public int userID=0;
-        string user_type=null;
+        public string user_type=null;
 
         private void setSize()
         {
@@ -75,6 +76,15 @@ namespace YourFmNew
             }catch(Exception e)
             {
                 pictureBox2.Image = Properties.Resources.user_default;
+            }
+
+            // check if it is a station
+            if (user_type=="station")
+            {
+                Control[] controls = this.Controls.Find("homeController", true);
+                Home h = (Home)controls[0];
+
+                h.showBtnAddShow();
             }
 
             this.username = username;
@@ -204,7 +214,7 @@ namespace YourFmNew
 
         private void createChat()
         {
-            Chat c = new Chat();
+            Chat c = new Chat(this);
             c.Name = "chatController";
             c.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
             c.Size = new Size(629, 693);
@@ -213,12 +223,14 @@ namespace YourFmNew
             this.Controls.Add(c);
         }
 
-        public void openChat(int id)
+        public void openChat(int id, string nome, string username, string foto)
         {
             Control[] controls = this.Controls.Find("chatController", true);
             Chat c = (Chat)controls[0];
 
             c.BringToFront();
+            c.loadStation(id, nome, username, foto);
+            addProgramsToSideBar(id);
         }
 
         private void createShow()
@@ -396,6 +408,11 @@ namespace YourFmNew
 
         private void button1_Click(object sender, EventArgs e)
         {
+            label4.Text = nome;
+            label3.Text = username;
+
+            label5.Visible = true;
+            panel1.Visible = true;
             openHome();
         }
 
@@ -431,11 +448,12 @@ namespace YourFmNew
         private void label2_Click(object sender, EventArgs e)
         {
             // set right panel information
-            openChat(0);
+            //openChat(0);
         }
 
         public void setCurrentPlay(int programaID)
         {
+            this.currentPlaylingId = programaID;
             cnn.Open();
             SqlCommand sqlCmd = new SqlCommand("detailsPrograma", cnn);
             sqlCmd.CommandType = CommandType.StoredProcedure;
@@ -450,7 +468,7 @@ namespace YourFmNew
                     string nome_track = dr.GetString(0);
                     string foto_track = dr.GetString(3);
                     string username_track = dr.GetString(4);
-                    MessageBox.Show(nome_track);
+
                     label1.Text = nome_track;
                     label2.Text = username_track;
                     try
@@ -464,6 +482,123 @@ namespace YourFmNew
             }
 
             cnn.Close();
+        }
+
+        public void setNameStation(string station_name, string station_username, string foto)
+        {
+            label4.Text = station_name;
+            label3.Text = station_username;
+
+            try
+            {
+                pictureBox2.Load(foto);
+            }
+            catch (Exception e)
+            {
+                pictureBox2.Image = Properties.Resources.user_default;
+            }
+        }
+
+        public void addProgramsToSideBar(int id)
+        {
+            cnn.Open();
+
+            // GET station programs
+            SqlCommand sqlCmd = new SqlCommand("selectedEstacao", cnn);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+
+            sqlCmd.Parameters.AddWithValue("@selEstacaoId", SqlDbType.Int).Value = id;
+            SqlDataReader dr = sqlCmd.ExecuteReader();
+
+            panel1.Controls.Clear();
+            if (dr.HasRows)
+            {
+                int x = 0;
+                while (dr.Read())
+                {
+                    int id_program = dr.GetInt32(0);
+                    string nome_program = dr.GetString(1);
+                    string foto_program = dr.GetString(3);
+
+                    Panel p = new Panel();
+                    p.Location = new Point(0, (int)(142 * x));
+                    p.Size = new Size(365, 142);
+                    p.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
+                    p.MouseEnter += new EventHandler(hoverPanel);
+                    p.MouseLeave += new EventHandler(outPanel);
+
+                    PictureBox pb = new PictureBox();
+                    pb.Size = new Size(100, 100);
+                    pb.Location = new Point(9, 21);
+                    pb.BackColor = Color.AliceBlue;
+                    pb.Load(foto_program);
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    Label l1 = new Label();
+                    l1.Text = nome_program;
+                    l1.ForeColor = Color.White;
+                    l1.Font = new Font(new FontFamily("Segoe UI"), (float)12.0, FontStyle.Bold, GraphicsUnit.Point); //Segoe UI; 12pt; style=Bold
+                    l1.Location = new Point(115, 33);
+                    l1.Size = new Size(365, 32);
+
+                    Label l2 = new Label();
+                    l2.Text = "this station";
+                    l2.ForeColor = Color.White;
+                    l2.Font = new Font(new FontFamily("Segoe UI"), (float)10.0, FontStyle.Regular, GraphicsUnit.Point); //Segoe UI; 12pt; style=Bold
+                    l2.Location = new Point(117, 77);
+
+                    p.Controls.Add(pb);
+                    p.Controls.Add(l1);
+                    p.Controls.Add(l2);
+                    panel1.Controls.Add(p);
+                    x++;
+                }
+            }
+            cnn.Close();
+        }
+
+        public void addOwnPlaylistsDropbox()
+        {
+            cnn.Open();
+
+            // GET station programs
+            SqlCommand sqlCmd = new SqlCommand("listUserPlaylists", cnn);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.Parameters.AddWithValue("@userid", SqlDbType.Int).Value = this.userID;
+            SqlDataReader dr = sqlCmd.ExecuteReader();
+
+            darkComboBox1.Items.Clear();
+            if (dr.HasRows)
+            {
+                int x = 0;
+                while (dr.Read())
+                {
+                    int id_playlist = dr.GetInt32(0);
+                    string nome_playlist = dr.GetString(1);
+
+                    darkComboBox1.Items.Add(id_playlist.ToString() + " - " + nome_playlist);
+                }
+            }
+
+            cnn.Close();
+        }
+
+        private void darkButton1_Click(object sender, EventArgs e)
+        {
+            string option = darkComboBox1.Text;
+            string[] components = option.Split(" - ");
+
+            int id_playlist = int.Parse(components[0]);
+
+            cnn.Open();
+            SqlCommand sqlCmd = new SqlCommand("addProgramaToPlaylist", cnn);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.Parameters.AddWithValue("@playlistid", SqlDbType.Int).Value = id_playlist;
+            sqlCmd.Parameters.AddWithValue("@programaid", SqlDbType.Int).Value = this.currentPlaylingId;
+            sqlCmd.Parameters.AddWithValue("@userid", SqlDbType.Int).Value = this.userID;
+            SqlDataReader dr = sqlCmd.ExecuteReader();
+            cnn.Close();
+            MessageBox.Show("Adicionado");
         }
     }
 }

@@ -27,8 +27,6 @@ namespace YourFmNew
 
         private void darkButton1_Click(object sender, EventArgs e)
         {
-
-
             String username = textBox1.Text;
             String password = textBox2.Text;
             string nome =null;
@@ -69,7 +67,7 @@ namespace YourFmNew
                 MessageBox.Show("Combinação username:password is incorrect");
             }
             superMain.cnn.Close();
-            
+            superMain.addOwnPlaylistsDropbox();
         }
 
         private void darkButton3_Click(object sender, EventArgs e)
