@@ -39,6 +39,8 @@ namespace YourFmNew
 
         public void loadShows(bool playlist, Object id)
         {
+
+            panel1.Controls.Clear();
             superMain.cnn.Open();
             SqlCommand sqlCmd = null;
 
@@ -73,16 +75,14 @@ namespace YourFmNew
                 }
             }
 
-            
-
             SqlDataReader dr = sqlCmd.ExecuteReader();
 
             int pictureSize = 90;
             int top = 0;
 
-            // MessageBox.Show(dr.FieldCount.ToString()); // mostra "3", o que está certo
             if (dr.HasRows)
             {
+
                 int x = 0;
                 while (dr.Read())
                 {
@@ -106,6 +106,7 @@ namespace YourFmNew
                     pb.Location = new Point(0, 0);
                     pb.BackColor = Color.AliceBlue;
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pb.Click += new EventHandler((sender, e) => play(id_track));
                     pb.Load(foto_track);
                     pnl.Controls.Add(pb);
 

@@ -36,6 +36,7 @@ namespace YourFmNew
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.darkComboBox1 = new DarkUI.Controls.DarkComboBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@ namespace YourFmNew
             this.label2 = new System.Windows.Forms.Label();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkButton4 = new DarkUI.Controls.DarkButton();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -106,8 +106,10 @@ namespace YourFmNew
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox2.Location = new System.Drawing.Point(12, 187);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '•';
             this.textBox2.PlaceholderText = "Password";
             this.textBox2.Size = new System.Drawing.Size(476, 38);
             this.textBox2.TabIndex = 4;
@@ -119,6 +121,7 @@ namespace YourFmNew
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.ForeColor = System.Drawing.Color.White;
             this.textBox1.Location = new System.Drawing.Point(12, 119);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Username";
@@ -145,6 +148,20 @@ namespace YourFmNew
             this.panel2.TabIndex = 3;
             this.panel2.Visible = false;
             // 
+            // textBox8
+            // 
+            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox8.ForeColor = System.Drawing.SystemColors.Window;
+            this.textBox8.Location = new System.Drawing.Point(12, 383);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.PlaceholderText = "Foto (url)";
+            this.textBox8.Size = new System.Drawing.Size(476, 38);
+            this.textBox8.TabIndex = 17;
+            // 
             // darkComboBox1
             // 
             this.darkComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -167,6 +184,7 @@ namespace YourFmNew
             this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox7.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox7.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox7.Location = new System.Drawing.Point(12, 295);
             this.textBox7.Name = "textBox7";
             this.textBox7.PlaceholderText = "Data Nascimento";
@@ -180,6 +198,7 @@ namespace YourFmNew
             this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox6.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox6.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox6.Location = new System.Drawing.Point(12, 251);
             this.textBox6.Name = "textBox6";
             this.textBox6.PlaceholderText = "Nome";
@@ -193,6 +212,7 @@ namespace YourFmNew
             this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox5.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox5.Location = new System.Drawing.Point(12, 207);
             this.textBox5.Name = "textBox5";
             this.textBox5.PlaceholderText = "Email";
@@ -206,8 +226,10 @@ namespace YourFmNew
             this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox3.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox3.Location = new System.Drawing.Point(12, 163);
             this.textBox3.Name = "textBox3";
+            this.textBox3.PasswordChar = '•';
             this.textBox3.PlaceholderText = "Password";
             this.textBox3.Size = new System.Drawing.Size(476, 38);
             this.textBox3.TabIndex = 12;
@@ -219,6 +241,7 @@ namespace YourFmNew
             this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox4.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox4.Location = new System.Drawing.Point(12, 119);
             this.textBox4.Name = "textBox4";
             this.textBox4.PlaceholderText = "Username";
@@ -259,19 +282,6 @@ namespace YourFmNew
             this.darkButton4.TabIndex = 7;
             this.darkButton4.Text = "Signup";
             this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
-            // 
-            // textBox8
-            // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox8.Location = new System.Drawing.Point(12, 383);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.PlaceholderText = "Foto (url)";
-            this.textBox8.Size = new System.Drawing.Size(476, 38);
-            this.textBox8.TabIndex = 17;
             // 
             // Login
             // 

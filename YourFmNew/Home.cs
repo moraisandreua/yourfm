@@ -13,6 +13,7 @@ namespace YourFmNew
 {
     public partial class Home : UserControl
     {
+
         Main superMain = null;
         int currentPage = 1;
 
@@ -20,6 +21,11 @@ namespace YourFmNew
         {
             InitializeComponent();
             this.superMain = super;
+        }
+
+        public void showBtnAddShow()
+        {
+            darkButton1.Visible = true;
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -42,9 +48,9 @@ namespace YourFmNew
             getStations(pictureWidth, currentPage); // currentPage é um parametro da class que identifica a página atual da paginação
         }
 
-        void openChat(Object sender, EventArgs e)
+        void openChat(int id, string nome, string username, string foto)
         {
-            superMain.openChat(0); // TO-DO alterar isto
+            superMain.openChat(id, nome, username, foto); 
         }
 
         private void darkButton1_Click(object sender, EventArgs e)
@@ -67,9 +73,10 @@ namespace YourFmNew
                 int x = 0;
                 while (dr.Read())
                 {
-                    int id = dr.GetInt32(0);
-                    string nome = dr.GetString(1);
-                    string foto = dr.GetString(2);
+                    int id_station = dr.GetInt32(0);
+                    string nome_station = dr.GetString(1);
+                    string foto_station = dr.GetString(2);
+                    string username_station = dr.GetString(4);
 
                     PictureBox pb = new PictureBox();
                     pb.Width = (int)pictureWidth;
@@ -77,10 +84,10 @@ namespace YourFmNew
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
                     try
                     {
-                        pb.Load(foto);
+                        pb.Load(foto_station);
                     }catch(Exception e)
                     {
-
+                        pb.Image = Properties.Resources.image_not_found;
                     }
 
                     double left = (x * 20) + ((x - 1) * pictureWidth);
@@ -90,9 +97,7 @@ namespace YourFmNew
                     pb.Location = new Point((int)left, (int)top);
                     pb.BackColor = Color.AliceBlue;
 
-                    OpenStationEventArgs ea = new OpenStationEventArgs();
-                    ea.userID = id;
-                    pb.Click += new EventHandler(openChat);
+                    pb.Click += new EventHandler((sender, e) => openChat(id_station, nome_station, username_station, foto_station));
                     pb.Cursor = System.Windows.Forms.Cursors.Hand;
 
                     flowLayoutPanel1.Controls.Add(pb);
@@ -107,9 +112,4 @@ namespace YourFmNew
             return null;
         }
     }
-}
-
-public class OpenStationEventArgs : EventArgs
-{
-    public int userID {get; set;}
 }
