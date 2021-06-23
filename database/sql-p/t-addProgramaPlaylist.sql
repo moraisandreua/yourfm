@@ -2,14 +2,14 @@
 
 
 CREATE PROC dbo.addProgramaPlaylist
-    @programaid AS INT, @userid AS INT
+    @programaid AS INT, @userid AS INT, @playlistid AS INT
 AS
     BEGIN
         IF EXISTS (SELECT id FROM programa WHERE id = @programaid) AND EXISTS(SELECT userid FROM [user] WHERE userid = @userid)
             BEGIN
                 BEGIN TRY
                     BEGIN TRAN T1
-                        INSERT INTO programa_listareproducao VALUES (@programaid,@userid)
+                        INSERT INTO programa_listareproducao VALUES (@programaid,@playlistid)
                     COMMIT TRAN T1
                 END TRY 
                 BEGIN CATCH
@@ -19,3 +19,4 @@ AS
                 END CATCH
             END 
     END
+EXEC dbo.addProgramaPlaylist 2,50,1
