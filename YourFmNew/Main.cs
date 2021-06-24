@@ -15,7 +15,9 @@ namespace YourFmNew
         int titleBarBtn_top = 0;
         bool playing = false;
         int currentPlaylingId=0;
-
+        int currentOpenedId = 0;
+         
+        string original_username = null;
         // user's info
         public string username=null;
         string nome=null;
@@ -88,9 +90,13 @@ namespace YourFmNew
             }
 
             this.username = username;
+            this.original_username = username;
+
             Login lg = (Login) Controls.Find("loginPanel", true)[0];
             this.Controls.Remove(lg);
             createTileBar();
+
+
         }
 
         private void Form2_Move(object sender, EventArgs e)
@@ -210,6 +216,7 @@ namespace YourFmNew
             Library l = (Library)controls[0];
 
             l.BringToFront();
+            l.loadPlaylists();
         }
 
         private void createChat()
@@ -231,6 +238,7 @@ namespace YourFmNew
             c.BringToFront();
             c.loadStation(id, nome, username, foto);
             addProgramsToSideBar(id);
+            currentOpenedId = id;
         }
 
         private void createShow()
@@ -254,7 +262,7 @@ namespace YourFmNew
 
         private void createShowManage()
         {
-            ShowManage sm = new ShowManage();
+            ShowManage sm = new ShowManage(this);
             sm.Name = "showManageController";
             sm.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
             sm.Size = new Size(629, 693);
@@ -358,7 +366,7 @@ namespace YourFmNew
 
         private void createAddShow()
         {
-            AddShow l = new AddShow();
+            ShowManage l = new ShowManage(this);
             l.Name = "AddShowController";
             l.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
             l.Size = new Size(629, 693);
@@ -370,7 +378,7 @@ namespace YourFmNew
         public void openAddShow()
         {
             Control[] controls = this.Controls.Find("AddShowController", true);
-            AddShow l = (AddShow)controls[0];
+            ShowManage l = (ShowManage)controls[0];
 
             l.BringToFront();
         }
@@ -489,6 +497,15 @@ namespace YourFmNew
             label4.Text = station_name;
             label3.Text = station_username;
 
+            if (station_username==original_username)
+            {
+                button7.Visible = false;
+            }
+            else
+            {
+                button7.Visible = true;
+            }
+
             try
             {
                 pictureBox2.Load(foto);
@@ -531,7 +548,15 @@ namespace YourFmNew
                     pb.Size = new Size(100, 100);
                     pb.Location = new Point(9, 21);
                     pb.BackColor = Color.AliceBlue;
-                    pb.Load(foto_program);
+                    try
+                    {
+                        pb.Load(foto_program);
+                    }
+                    catch (Exception e)
+                    {
+                        pb.Image = Properties.Resources.image_not_found;
+                    }
+                    
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
 
                     Label l1 = new Label();
@@ -599,6 +624,27 @@ namespace YourFmNew
             SqlDataReader dr = sqlCmd.ExecuteReader();
             cnn.Close();
             MessageBox.Show("Adicionado");
+        }
+
+        public void searchSearch(String termo)
+        {
+            Control[] controls = this.Controls.Find("searchController", true);
+            Search s = (Search)controls[0];
+
+            s.BringToFront();
+            s.searchBoxTrigger(termo);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            cnn.Open();
+            SqlCommand sqlCmd = new SqlCommand("doFollow", cnn);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.Parameters.AddWithValue("@followedUserID", SqlDbType.Text).Value = currentOpenedId;
+            sqlCmd.Parameters.AddWithValue("@followerUserID", SqlDbType.Int).Value = userID;
+            SqlDataReader dr = sqlCmd.ExecuteReader();
+            MessageBox.Show("Seguindo");
+            cnn.Close();
         }
     }
 }

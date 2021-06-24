@@ -30,6 +30,7 @@ namespace YourFmNew
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,6 +59,7 @@ namespace YourFmNew
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label3);
@@ -67,6 +69,21 @@ namespace YourFmNew
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(400, 635);
             this.panel2.TabIndex = 5;
+            // 
+            // button7
+            // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.BackgroundImage = global::YourFmNew.Properties.Resources.follow;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Location = new System.Drawing.Point(351, 64);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(32, 32);
+            this.button7.TabIndex = 20;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Visible = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // panel1
             // 
@@ -343,5 +360,6 @@ namespace YourFmNew
         private System.Windows.Forms.Label label4;
         private DarkUI.Controls.DarkButton darkButton1;
         private DarkUI.Controls.DarkComboBox darkComboBox1;
+        private System.Windows.Forms.Button button7;
     }
 }

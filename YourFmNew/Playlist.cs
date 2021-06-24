@@ -39,7 +39,6 @@ namespace YourFmNew
 
         public void loadShows(bool playlist, Object id)
         {
-
             panel1.Controls.Clear();
             superMain.cnn.Open();
             SqlCommand sqlCmd = null;
@@ -64,15 +63,17 @@ namespace YourFmNew
                 SqlCommand sqlCmd_details = new SqlCommand("detailsPlaylist", superMain.cnn);
                 sqlCmd_details.CommandType = CommandType.StoredProcedure;
                 sqlCmd_details.Parameters.AddWithValue("@id", SqlDbType.Int).Value = playlistID;
-                SqlDataReader dr_details = sqlCmd.ExecuteReader();
+                SqlDataReader dr_details = sqlCmd_details.ExecuteReader();
                 if (dr_details.HasRows)
                 {
                     while (dr_details.Read())
                     {
-                        string nome_playlist = dr_details.GetString(0);
+                        string nome_playlist = dr_details.GetString(1);
                         label1.Text = nome_playlist;
+                        
                     }
                 }
+                dr_details.Close();
             }
 
             SqlDataReader dr = sqlCmd.ExecuteReader();
