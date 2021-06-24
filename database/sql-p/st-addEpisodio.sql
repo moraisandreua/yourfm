@@ -4,12 +4,18 @@ CREATE PROC dbo.addEpisodio
     @id_programa AS INT, @titulo AS VARCHAR(50), @data_ini AS VARCHAR(80),@data_fim AS VARCHAR(80)
 AS 
 BEGIN
+    DECLARE @classificacaoid as INT
+    SET @episodioid = (SELECT MAX(n_episodio) FROM episodio WHERE id_programa=@id_programa)+1
+    IF @episodioid = 0 OR @episodioid = NULL OR @episodioid = ''
+        BEGIN
+            SET @episodioid = 1
+        END
     BEGIN TRAN
         BEGIN TRY
             INSERT INTO 
                 episodio (id_programa,n_episodio,titulo,data_ini,data_fim,duracao)
             VALUES
-                (@id_programa,(SELECT MAX(n_episodio) FROM episodio WHERE id_programa=@id_programa)+1,@titulo, CAST(@data_ini AS datetime), CAST(@data_fim AS datetime),DATEDIFF(hour,@data_ini,@data_fim))
+                (@id_programa,@episodioid,@titulo, CAST(@data_ini AS datetime), CAST(@data_fim AS datetime),DATEDIFF(hour,@data_ini,@data_fim))
         END TRY
         BEGIN CATCH
             RAISERROR('Erro ao inserir',16,1)
