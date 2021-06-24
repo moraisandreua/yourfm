@@ -62,6 +62,7 @@ namespace YourFmNew
             this.darkTextBox1.PlaceholderText = "Search...";
             this.darkTextBox1.Size = new System.Drawing.Size(269, 31);
             this.darkTextBox1.TabIndex = 2;
+            this.darkTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.darkTextBox1_KeyDown);
             // 
             // darkButton1
             // 

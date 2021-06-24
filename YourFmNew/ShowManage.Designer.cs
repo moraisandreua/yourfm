@@ -31,19 +31,22 @@ namespace YourFmNew
         {
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.programTitleTxt = new System.Windows.Forms.TextBox();
+            this.programDescTxt = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.programSaveBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.modernButton1 = new DevLib.ModernUI.Forms.ModernButton();
-            this.label5 = new System.Windows.Forms.Label();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.episodioInicioTxt = new DarkUI.Controls.DarkTextBox();
+            this.episodioFimTxt = new DarkUI.Controls.DarkTextBox();
+            this.episodioFotoTxt = new DarkUI.Controls.DarkTextBox();
+            this.episodioNomeTxt = new DarkUI.Controls.DarkTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.programFotoTxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
@@ -68,52 +71,54 @@ namespace YourFmNew
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // programTitleTxt
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(165, 84);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Titulo";
-            this.textBox1.Size = new System.Drawing.Size(274, 43);
-            this.textBox1.TabIndex = 4;
+            this.programTitleTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.programTitleTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.programTitleTxt.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.programTitleTxt.ForeColor = System.Drawing.SystemColors.Window;
+            this.programTitleTxt.Location = new System.Drawing.Point(165, 84);
+            this.programTitleTxt.Name = "programTitleTxt";
+            this.programTitleTxt.PlaceholderText = "Titulo";
+            this.programTitleTxt.Size = new System.Drawing.Size(508, 43);
+            this.programTitleTxt.TabIndex = 4;
             // 
-            // textBox2
+            // programDescTxt
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox2.Location = new System.Drawing.Point(165, 133);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "Descrição";
-            this.textBox2.Size = new System.Drawing.Size(508, 71);
-            this.textBox2.TabIndex = 5;
+            this.programDescTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.programDescTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.programDescTxt.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.programDescTxt.ForeColor = System.Drawing.SystemColors.Window;
+            this.programDescTxt.Location = new System.Drawing.Point(165, 133);
+            this.programDescTxt.Multiline = true;
+            this.programDescTxt.Name = "programDescTxt";
+            this.programDescTxt.PlaceholderText = "Descrição";
+            this.programDescTxt.Size = new System.Drawing.Size(508, 71);
+            this.programDescTxt.TabIndex = 5;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(20, 210);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1036, 120);
+            this.panel1.Size = new System.Drawing.Size(1027, 120);
             this.panel1.TabIndex = 6;
             // 
-            // button1
+            // programSaveBtn
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(890, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 48);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.programSaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.programSaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.programSaveBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.programSaveBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.programSaveBtn.Location = new System.Drawing.Point(881, 20);
+            this.programSaveBtn.Name = "programSaveBtn";
+            this.programSaveBtn.Size = new System.Drawing.Size(166, 48);
+            this.programSaveBtn.TabIndex = 7;
+            this.programSaveBtn.Text = "Guardar";
+            this.programSaveBtn.UseVisualStyleBackColor = true;
+            this.programSaveBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -131,34 +136,18 @@ namespace YourFmNew
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(20, 410);
+            this.label3.Location = new System.Drawing.Point(32, 459);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 38);
             this.label3.TabIndex = 9;
             this.label3.Text = "Inicio:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy hh:mm:ss";
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 416);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(300, 31);
-            this.dateTimePicker1.TabIndex = 10;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CustomFormat = "dd/MM/yyyy hh:mm:ss";
-            this.dateTimePicker2.Location = new System.Drawing.Point(115, 464);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(300, 31);
-            this.dateTimePicker2.TabIndex = 12;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(20, 458);
+            this.label4.Location = new System.Drawing.Point(32, 503);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 38);
             this.label4.TabIndex = 11;
@@ -169,59 +158,120 @@ namespace YourFmNew
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // modernButton1
-            // 
-            this.modernButton1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.modernButton1.FontSize = DevLib.ModernUI.Drawing.ModernFontSize.Large;
-            this.modernButton1.Location = new System.Drawing.Point(20, 523);
-            this.modernButton1.Name = "modernButton1";
-            this.modernButton1.Size = new System.Drawing.Size(228, 53);
-            this.modernButton1.TabIndex = 13;
-            this.modernButton1.Text = "Ficheiro de Audio";
-            this.modernButton1.UseSelectable = true;
-            this.modernButton1.UseStyleColors = false;
-            this.modernButton1.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(254, 535);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(161, 28);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "nome do ficheiro";
-            // 
             // darkButton1
             // 
-            this.darkButton1.Location = new System.Drawing.Point(20, 591);
+            this.darkButton1.Location = new System.Drawing.Point(20, 630);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(214, 64);
             this.darkButton1.TabIndex = 15;
             this.darkButton1.Text = "Adicionar Episódio";
+            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
-            // Show
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(32, 550);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 38);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Foto:";
+            // 
+            // episodioInicioTxt
+            // 
+            this.episodioInicioTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.episodioInicioTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.episodioInicioTxt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.episodioInicioTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.episodioInicioTxt.Location = new System.Drawing.Point(134, 459);
+            this.episodioInicioTxt.Name = "episodioInicioTxt";
+            this.episodioInicioTxt.PlaceholderText = "0000-00-00 00:00:00";
+            this.episodioInicioTxt.Size = new System.Drawing.Size(271, 39);
+            this.episodioInicioTxt.TabIndex = 17;
+            // 
+            // episodioFimTxt
+            // 
+            this.episodioFimTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.episodioFimTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.episodioFimTxt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.episodioFimTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.episodioFimTxt.Location = new System.Drawing.Point(134, 506);
+            this.episodioFimTxt.Name = "episodioFimTxt";
+            this.episodioFimTxt.PlaceholderText = "0000-00-00 00:00:00";
+            this.episodioFimTxt.Size = new System.Drawing.Size(271, 39);
+            this.episodioFimTxt.TabIndex = 18;
+            // 
+            // episodioFotoTxt
+            // 
+            this.episodioFotoTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.episodioFotoTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.episodioFotoTxt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.episodioFotoTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.episodioFotoTxt.Location = new System.Drawing.Point(134, 553);
+            this.episodioFotoTxt.Name = "episodioFotoTxt";
+            this.episodioFotoTxt.PlaceholderText = "http://";
+            this.episodioFotoTxt.Size = new System.Drawing.Size(271, 39);
+            this.episodioFotoTxt.TabIndex = 19;
+            // 
+            // episodioNomeTxt
+            // 
+            this.episodioNomeTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.episodioNomeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.episodioNomeTxt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.episodioNomeTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.episodioNomeTxt.Location = new System.Drawing.Point(134, 412);
+            this.episodioNomeTxt.Name = "episodioNomeTxt";
+            this.episodioNomeTxt.PlaceholderText = "Ep. 1";
+            this.episodioNomeTxt.Size = new System.Drawing.Size(271, 39);
+            this.episodioNomeTxt.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(32, 411);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(99, 38);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Nome:";
+            // 
+            // programFotoTxt
+            // 
+            this.programFotoTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.programFotoTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.programFotoTxt.Location = new System.Drawing.Point(20, 180);
+            this.programFotoTxt.Name = "programFotoTxt";
+            this.programFotoTxt.PlaceholderText = "url";
+            this.programFotoTxt.Size = new System.Drawing.Size(120, 24);
+            this.programFotoTxt.TabIndex = 22;
+            // 
+            // ShowManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Controls.Add(this.darkButton1);
+            this.Controls.Add(this.programFotoTxt);
+            this.Controls.Add(this.episodioNomeTxt);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.episodioFotoTxt);
+            this.Controls.Add(this.episodioFimTxt);
+            this.Controls.Add(this.episodioInicioTxt);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.modernButton1);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.darkButton1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.programSaveBtn);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.programDescTxt);
+            this.Controls.Add(this.programTitleTxt);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Show";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "ShowManage";
             this.Size = new System.Drawing.Size(1073, 753);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
@@ -234,18 +284,21 @@ namespace YourFmNew
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox programTitleTxt;
+        private System.Windows.Forms.TextBox programDescTxt;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button programSaveBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label4;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private DarkUI.Controls.DarkButton darkButton1;
+        private DarkUI.Controls.DarkTextBox episodioInicioTxt;
         private System.Windows.Forms.Label label5;
-        private DevLib.ModernUI.Forms.ModernButton modernButton1;
+        private DarkUI.Controls.DarkTextBox episodioFotoTxt;
+        private DarkUI.Controls.DarkTextBox episodioFimTxt;
+        private DarkUI.Controls.DarkTextBox episodioNomeTxt;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox programFotoTxt;
     }
 }

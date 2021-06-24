@@ -62,7 +62,7 @@ namespace YourFmNew
             }
         }
 
-        private void loadPlaylists()
+        public void loadPlaylists()
         {
             panel3.Controls.Clear();
             int pictureSize = 200;
@@ -87,6 +87,7 @@ namespace YourFmNew
                     PictureBox pb = new PictureBox();
                     pb.Width = (int)pictureSize;
                     pb.Height = (int)pictureSize;
+                    pb.SizeMode=PictureBoxSizeMode.StretchImage;
 
                     double left = (x * 20) + ((x - 1) * pictureSize);
                     int top = 0;
@@ -122,7 +123,6 @@ namespace YourFmNew
         {
             loadShows();
             loadStations();
-            loadPlaylists();
         }
 
         private void darkButton1_Click(object sender, EventArgs e)

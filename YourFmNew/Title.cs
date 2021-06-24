@@ -52,6 +52,15 @@ namespace YourFmNew
             diffY = MousePosition.Y - superWindow.Location.Y;
         }
 
+        private void darkTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                String termo = darkTextBox1.Text;
+                superWindow.searchSearch(termo);
+            }
+        }
+
         public void showControls()
         {
             panel3.Visible = true;

@@ -53,10 +53,10 @@ namespace YourFmNew
             // darkButton1
             // 
             this.darkButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.darkButton1.Location = new System.Drawing.Point(787, 20);
+            this.darkButton1.Location = new System.Drawing.Point(859, 20);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton1.Size = new System.Drawing.Size(269, 48);
+            this.darkButton1.Size = new System.Drawing.Size(197, 48);
             this.darkButton1.TabIndex = 2;
             this.darkButton1.Text = "Adicionar Programa";
             this.darkButton1.Visible = false;

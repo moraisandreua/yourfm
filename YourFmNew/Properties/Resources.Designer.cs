@@ -73,6 +73,16 @@ namespace YourFmNew.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap follow {
+            get {
+                object obj = ResourceManager.GetObject("follow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap forward_2 {
             get {
                 object obj = ResourceManager.GetObject("forward_2", resourceCulture);
